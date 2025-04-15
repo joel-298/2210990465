@@ -16,7 +16,10 @@ const baseUrl = 'http://20.244.56.144/evaluation-service';
 // FETCH USERS
 const fetchUsers = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/users`);
+    const response = await axios.get(`${baseUrl}/users` , 
+      { timeout: 500,
+        headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzQ0NzAzNzY4LCJpYXQiOjE3NDQ3MDM0NjgsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjkzYjAyM2I5LTczYTEtNDFlZS1iYzg0LTI2MjkyOTg0MmUyOSIsInN1YiI6ImpvZWw0NjUuYmUyMkBjaGl0a2FyYS5lZHUuaW4ifSwiZW1haWwiOiJqb2VsNDY1LmJlMjJAY2hpdGthcmEuZWR1LmluIiwibmFtZSI6ImpvZWwgbWF0dGhldyIsInJvbGxObyI6IjIyMTA5OTA0NjUiLCJhY2Nlc3NDb2RlIjoiUHd6dWZHIiwiY2xpZW50SUQiOiI5M2IwMjNiOS03M2ExLTQxZWUtYmM4NC0yNjI5Mjk4NDJlMjkiLCJjbGllbnRTZWNyZXQiOiJyWlNlcnBoRldrVmRScGFhIn0.mfy9z8wzAmtmiMFd4QEmikzT3BavpBYAp3k9AYuD01E` }
+      });
     return response.data.users;
   } catch (error) {
     console.error('Error fetching users:', error.message);
@@ -27,7 +30,11 @@ const fetchUsers = async () => {
 // Fetch POSTS
 const fetchPosts = async (userId) => {
   try {
-    const response = await axios.get(`${baseUrl}/users/${userId}/posts`);
+    const response = await axios.get(`${baseUrl}/users/${userId}/posts`, 
+      { timeout: 500,
+        headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzQ0NzAzNzY4LCJpYXQiOjE3NDQ3MDM0NjgsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjkzYjAyM2I5LTczYTEtNDFlZS1iYzg0LTI2MjkyOTg0MmUyOSIsInN1YiI6ImpvZWw0NjUuYmUyMkBjaGl0a2FyYS5lZHUuaW4ifSwiZW1haWwiOiJqb2VsNDY1LmJlMjJAY2hpdGthcmEuZWR1LmluIiwibmFtZSI6ImpvZWwgbWF0dGhldyIsInJvbGxObyI6IjIyMTA5OTA0NjUiLCJhY2Nlc3NDb2RlIjoiUHd6dWZHIiwiY2xpZW50SUQiOiI5M2IwMjNiOS03M2ExLTQxZWUtYmM4NC0yNjI5Mjk4NDJlMjkiLCJjbGllbnRTZWNyZXQiOiJyWlNlcnBoRldrVmRScGFhIn0.mfy9z8wzAmtmiMFd4QEmikzT3BavpBYAp3k9AYuD01E` }
+      }
+    );
     return response.data.posts;
   } catch (error) {
     console.error(`Error fetching posts for user ${userId}:`, error.message);
@@ -38,7 +45,11 @@ const fetchPosts = async (userId) => {
 // Fetch COMMENTS
 const fetchComments = async (postId) => {
   try {
-    const response = await axios.get(`${baseUrl}/posts/${postId}/comments`);
+    const response = await axios.get(`${baseUrl}/posts/${postId}/comments`,
+      { timeout: 500,
+        headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzQ0NzAzNzY4LCJpYXQiOjE3NDQ3MDM0NjgsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjkzYjAyM2I5LTczYTEtNDFlZS1iYzg0LTI2MjkyOTg0MmUyOSIsInN1YiI6ImpvZWw0NjUuYmUyMkBjaGl0a2FyYS5lZHUuaW4ifSwiZW1haWwiOiJqb2VsNDY1LmJlMjJAY2hpdGthcmEuZWR1LmluIiwibmFtZSI6ImpvZWwgbWF0dGhldyIsInJvbGxObyI6IjIyMTA5OTA0NjUiLCJhY2Nlc3NDb2RlIjoiUHd6dWZHIiwiY2xpZW50SUQiOiI5M2IwMjNiOS03M2ExLTQxZWUtYmM4NC0yNjI5Mjk4NDJlMjkiLCJjbGllbnRTZWNyZXQiOiJyWlNlcnBoRldrVmRScGFhIn0.mfy9z8wzAmtmiMFd4QEmikzT3BavpBYAp3k9AYuD01E` }
+      }
+    );
     return response.data.comments;
   } catch (error) {
     console.error(`Error fetching comments for post ${postId}:`, error.message);
